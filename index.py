@@ -47,7 +47,10 @@ def main():
    for id in ids:
         time.sleep(1)
         detail_url = BeautifulSoup(get_html(BASE_URL + id["href"]), 'html.parser').find("a", {"class":["button.dark-hover", "rounded-right"]})
-        file_download(BASE_URL+detail_url["href"])
+        if detail_url is not None:
+            file_download(BASE_URL+detail_url["href"])
+        
+
 
 if __name__ == "__main__":
     main()
